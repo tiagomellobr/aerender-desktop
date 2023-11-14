@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <v-app>
+    <NavMenu :toggleConfig="toggleConfig" :showConfig="showConfig" />
+    <v-main>
+      <SettingsView v-if="showConfig"/>
+      <MainView v-if="!showConfig"/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainView from "./components/MainView";
+import SettingsView from "./components/SettingsView";
+import NavMenu from "./components/NavMenu";
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
+    MainView,
+    SettingsView,
+    NavMenu
+  },
+
+  data: () => ({
+    showConfig: false,
+  }),
+
+  methods: {
+    toggleConfig() {
+      this.showConfig = !this.showConfig;
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

@@ -1,4 +1,4 @@
-# gri-afrender
+# aerender desktop
 
 ## Project setup
 ```
